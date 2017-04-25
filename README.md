@@ -2,9 +2,9 @@
 
 Tipboard-Docker allows you to deploy a containerized version of the [Tipboard](https://github.com/allegro/tipboard) application using Docker-Compose. Three containers are launched when you run `docker-compose up`:
 
-* Redis
-* Tipboard (the web app)
-* Nginx
+* Redis (database)
+* Tipboard (dashboard)
+* Nginx (web server)
 
 ## Clone and Replace
 
