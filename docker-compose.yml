@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  redis:
+    image: redis:3.0
+    container_name: redis
+    restart: always
+    networks:
+      - redis
+
+  tipboard:
+    build:
+      context: ./tipboard
+    container_name: tipboard
+    restart: always
+    networks:
+      - redis
+      - proxy
+    depends_on:
+      - redis
+
+  nginx:
+    build:
+      context: ./nginx
+    container_name: nginx
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - proxy
+    depends_on:
+      - tipboard
+
+networks:
+  redis:
+  proxy:
